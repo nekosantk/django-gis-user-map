@@ -26,3 +26,14 @@ SECRET_KEY = 'django-insecure-n@wv__z^5_irkzrcjr_e=2c64twi#5lf=t7$3yn-f0%aqwuci8
   ```shell
   $ python app/manage.py runserver
   ```
+
+## Running tests
+```
+flake8  . --exclude=migrations,venv,settings.py
+python app/manage.py test app/
+```
+
+# Linting fix up
+```
+autopep8 --in-place --aggressive 
+```
