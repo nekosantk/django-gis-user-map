@@ -4,21 +4,6 @@ from .models import CustomUser
 
 
 class RegisterForm(UserCreationForm):
-    # fields we want to include and customize in our form
-    first_name = forms.CharField(max_length=100,
-                                 required=True,
-                                 widget=forms.TextInput(
-                                     attrs={
-                                         'placeholder': 'First Name',
-                                         'class': 'form-control',
-                                     }))
-    last_name = forms.CharField(max_length=100,
-                                required=True,
-                                widget=forms.TextInput(
-                                    attrs={
-                                        'placeholder': 'Last Name',
-                                        'class': 'form-control',
-                                    }))
     username = forms.CharField(max_length=100,
                                required=True,
                                widget=forms.TextInput(
@@ -50,16 +35,26 @@ class RegisterForm(UserCreationForm):
                                         'data-toggle': 'password',
                                         'id': 'password',
                                     }))
+    home_address = forms.CharField(required=True,
+                             widget=forms.TextInput(
+                                 attrs={
+                                     'class': 'form-control'
+                                 }))
+    phone_number = forms.CharField(required=True,
+                             widget=forms.TextInput(
+                                 attrs={
+                                     'class': 'form-control'
+                                 }))
 
     class Meta:
         model = CustomUser
         fields = [
-            'first_name',
-            'last_name',
             'username',
             'email',
             'password1',
-            'password2'
+            'password2',
+            'home_address',
+            'phone_number'
         ]
 
 
@@ -89,7 +84,22 @@ class LoginForm(AuthenticationForm):
 
 
 class UpdateUserForm(forms.ModelForm):
+    username = forms.CharField(required=True,
+                             widget=forms.TextInput(
+                                 attrs={
+                                     'class': 'form-control'
+                                 }))
     email = forms.EmailField(required=True,
+                             widget=forms.TextInput(
+                                 attrs={
+                                     'class': 'form-control'
+                                 }))
+    home_address = forms.CharField(required=True,
+                             widget=forms.TextInput(
+                                 attrs={
+                                     'class': 'form-control'
+                                 }))
+    phone_number = forms.CharField(required=True,
                              widget=forms.TextInput(
                                  attrs={
                                      'class': 'form-control'
@@ -101,6 +111,5 @@ class UpdateUserForm(forms.ModelForm):
             'username',
             'email',
             'home_address',
-            'phone_number',
-            'location'
+            'phone_number'
         ]
