@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'usermap',
 ]
 
@@ -61,7 +62,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,7 +83,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        "ENGINE": "django.contrib.gis.db.backends.spatialite",
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
@@ -129,4 +130,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'usermap.CustomUser'
+AUTH_USER_MODEL = 'usermap.CustomUser'      # Custom user model with extra fields
+LOGIN_URL = "/login/"                       # Main page used to log in
+LOGIN_REDIRECT_URL = "/"                    # Redirect back to homepage on login
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False     # Closing browser has no effect on session
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True   # Only start the timer after becoming idle
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30      # Session should live a while

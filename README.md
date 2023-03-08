@@ -7,6 +7,10 @@ In a new terminal tab:
 
 1. Install the back-end requirements in the environment of your choice:
   ```shell
+  $ sudo apt-get install binutils libproj-dev gdal-bin libsqlite3-mod-spatialite
+  $ PYTHON_CONFIGURE_OPTS="--enable-loadable-sqlite-extensions"
+  $ sudo apt install libsqlite3-mod-spatialite
+  $ sudo apt install gdal-bin
   $ cd /path/to/repo/
   $ python3 -m pip install -r requirements.txt
   ```
@@ -26,3 +30,14 @@ SECRET_KEY = 'django-insecure-n@wv__z^5_irkzrcjr_e=2c64twi#5lf=t7$3yn-f0%aqwuci8
   ```shell
   $ python app/manage.py runserver
   ```
+
+## Running tests
+```
+flake8  . --exclude=migrations,venv,settings.py
+python app/manage.py test app/
+```
+
+# Linting fix up
+```
+autopep8 --in-place --aggressive 
+```
