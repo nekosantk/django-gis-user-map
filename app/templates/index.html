@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock title%}
+{% load static %}
+{% block content %}
+    <head>
+        <title>Homepage - World Map</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}" />
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet/dist/leaflet.css" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js" crossorigin=""></script>
+    </head>
+    <body>
+        <div id="maximize">
+            {{ markers|json_script:"markers-data" }}
+            <div id="map"></div>
+            <script src="{% static 'index.js' %}"></script>
+        </div>
+    </body>
+</html>
+{% endblock content %}
+
+

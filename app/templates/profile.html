@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Profile Page{% endblock title %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.3.0/ol.css">
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.3.0/dist/ol.js"></script>
+    {{ user_form.media }}
+</head>
+<body>
+<div class="form-content my-3 p-3">
+		<div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card shadow-lg border-0 rounded-lg mt-0 mb-5">
+                        <div class="card-header justify-content-center">
+                        	<h3 class="font-weight-light my-4 text-center">Update Profile</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {% if user_form.errors %}
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <div id="form_errors">
+                                            {% for key, value in user_form.errors.items %}
+                                                <strong>{{ value }}</strong>
+                                            {% endfor %}
+                                        </div>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endif %}
+                                <div class="form-row">
+                                    <div class="col-md-6">
+		                                <div class="form-group">
+		                                	<label class="small mb-1">Username</label>
+		                                    {{ user_form.username }}
+		                                </div>
+		                            </div>
+                                    <div class="col-md-6">
+		                                <div class="form-group">
+		                                	<label class="small mb-1">Phone number</label>
+		                                    {{ user_form.phone_number }}
+		                                </div>
+		                            </div>
+		                        </div>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+		                                <div class="form-group">
+		                                	<label class="small mb-1">Email</label>
+		                                    {{ user_form.email }}
+		                                </div>
+		                            </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+		                                <div class="form-group">
+		                                	<label class="small mb-1">Home address</label>
+		                                    {{ user_form.home_address }}
+		                                </div>
+		                            </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+		                                <div class="form-group">
+		                                	<label class="small mb-1">Location</label>
+		                                    {{ user_form.location }}
+                                            <script src="{% static 'profile.js' %}"></script>
+		                                </div>
+		                            </div>
+                                </div>
+                                <div class="form-group mt-4 mb-0">
+                                    <button type="reset" class="col-md-12 btn btn-dark">Reset</button><br><br>
+                                    <button type="submit" class="col-md-12 btn btn-dark">Submit</button><br><br>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+{% endblock content %}

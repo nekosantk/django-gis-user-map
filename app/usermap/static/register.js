@@ -1,0 +1,1 @@
+geodjango_location.map.getView().setZoom(2)
