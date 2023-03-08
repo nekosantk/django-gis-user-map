@@ -1,6 +1,15 @@
 # django-gis-user-map
  An example user management system that shows user locations on a map
 
+## CI/CD using Github Actions
+```
+https://github.com/nekosantk/django-gis-user-map/actions
+```
+## Docker
+```
+docker pull nekosantk/django-gis-user-map:latest
+docker run -p 8000:8000 nekosantk/django-gis-user-map:latest
+```
  ## Starting the Django application
 
 In a new terminal tab:

@@ -1,0 +1,11 @@
+version: "3.11.2"
+
+services:
+  django-gis-user-map:
+    image: nekosantk/django-gis-user-map:latest
+    ports:
+      - 8000:8000
+    container_name: django-gis-user-map
+
+volumes:
+  fastapiapp:

@@ -9,8 +9,7 @@ jobs:
         with:
           python-version: '3.11.2'
           cache: 'pip'
-      - run: sudo apt-get install binutils libproj-dev gdal-bin libsqlite3-mod-spatialite gdal-bin sqlite sqlite3
-      - run: pip install flake8
+      - run: apt-get install binutils libproj-dev gdal-bin libsqlite3-mod-spatialite gdal-bin sqlite3
       - run: pip install -r requirements.txt
       - run: python app/manage.py test app
       - run: flake8 . --exclude=migrations,venv,settings.py
