@@ -36,15 +36,15 @@ class RegisterForm(UserCreationForm):
                                         'id': 'password',
                                     }))
     home_address = forms.CharField(required=True,
-                             widget=forms.TextInput(
-                                 attrs={
-                                     'class': 'form-control'
-                                 }))
+                                   widget=forms.TextInput(
+                                       attrs={
+                                           'class': 'form-control'
+                                       }))
     phone_number = forms.CharField(required=True,
-                             widget=forms.TextInput(
-                                 attrs={
-                                     'class': 'form-control'
-                                 }))
+                                   widget=forms.TextInput(
+                                       attrs={
+                                           'class': 'form-control'
+                                       }))
 
     class Meta:
         model = CustomUser
@@ -85,25 +85,25 @@ class LoginForm(AuthenticationForm):
 
 class UpdateUserForm(forms.ModelForm):
     username = forms.CharField(required=True,
-                             widget=forms.TextInput(
-                                 attrs={
-                                     'class': 'form-control'
-                                 }))
+                               widget=forms.TextInput(
+                                   attrs={
+                                       'class': 'form-control'
+                                   }))
     email = forms.EmailField(required=True,
                              widget=forms.TextInput(
                                  attrs={
                                      'class': 'form-control'
                                  }))
     home_address = forms.CharField(required=True,
-                             widget=forms.TextInput(
-                                 attrs={
-                                     'class': 'form-control'
-                                 }))
+                                   widget=forms.TextInput(
+                                       attrs={
+                                           'class': 'form-control'
+                                       }))
     phone_number = forms.CharField(required=True,
-                             widget=forms.TextInput(
-                                 attrs={
-                                     'class': 'form-control'
-                                 }))
+                                   widget=forms.TextInput(
+                                       attrs={
+                                           'class': 'form-control'
+                                       }))
 
     class Meta:
         model = CustomUser

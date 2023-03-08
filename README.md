@@ -7,10 +7,7 @@ In a new terminal tab:
 
 1. Install the back-end requirements in the environment of your choice:
   ```shell
-  $ sudo apt-get install binutils libproj-dev gdal-bin libsqlite3-mod-spatialite
-  $ PYTHON_CONFIGURE_OPTS="--enable-loadable-sqlite-extensions"
-  $ sudo apt install libsqlite3-mod-spatialite
-  $ sudo apt install gdal-bin
+  $ sudo apt-get install binutils libproj-dev gdal-bin libsqlite3-mod-spatialite gdal-bin sqlite sqlite3
   $ cd /path/to/repo/
   $ python3 -m pip install -r requirements.txt
   ```
