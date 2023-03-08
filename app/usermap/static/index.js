@@ -9,7 +9,7 @@ let feature = L.geoJSON(markers)
     return "<p>" + layer.feature.properties.username + "</p>"
         + "<p>" + layer.feature.properties.email + "</p>"
         + "<p>" + layer.feature.properties.home_address + "</p>"
-        + "<p>" + layer.feature.properties.location + "</p>"
+        + "<p>" + layer.feature.properties.phone_number + "</p>"
   })
   .addTo(map);
 map.setView([0, 0], 2);

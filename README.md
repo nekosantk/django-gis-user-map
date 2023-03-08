@@ -34,7 +34,13 @@ flake8  . --exclude=migrations,venv,settings.py
 python app/manage.py test app/
 ```
 
-# Linting fix up
+## Linting fix up
 ```
 autopep8 --in-place --aggressive 
 ```
+## Screenshots
+![img.png](img.png)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)

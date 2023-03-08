@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block title %} Register Page {% endblock title%}
+{% load static %}
 {% block content %}
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.3.0/ol.css">
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.3.0/dist/ol.js"></script>
+    {{ form.media }}
+</head>
+<body>
     <div class="form-content my-3 p-3">
 		<div class="container">
             <div class="row justify-content-center">
@@ -33,8 +40,8 @@
 		                            </div>
                                     <div class="col-md-6">
 		                                <div class="form-group">
-		                                	<label class="small mb-1">Email</label>
-		                                    {{ form.email }}
+		                                	<label class="small mb-1">Phone number</label>
+		                                    {{ form.phone_number }}
 		                                </div>
 		                            </div>
 		                        </div>
@@ -57,6 +64,14 @@
                                 <div class="form-row">
                                     <div class="col-md-12">
 		                                <div class="form-group">
+		                                	<label class="small mb-1">Email</label>
+		                                    {{ form.email }}
+		                                </div>
+		                            </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+		                                <div class="form-group">
 		                                	<label class="small mb-1">Home address</label>
 		                                    {{ form.home_address }}
 		                                </div>
@@ -65,8 +80,9 @@
                                 <div class="form-row">
                                     <div class="col-md-12">
 		                                <div class="form-group">
-		                                	<label class="small mb-1">Phone number</label>
-		                                    {{ form.phone_number }}
+		                                	<label class="small mb-1">Location</label>
+		                                    {{ form.location }}
+                                            <script src="{% static 'register.js' %}"></script>
 		                                </div>
 		                            </div>
                                 </div>
@@ -75,14 +91,10 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer text-center">
-                            <div class="small">
-                                <a href="{% url 'login' %}">Have an account? Go to Sign in</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
 	</div>
+</body>
 {% endblock content %}

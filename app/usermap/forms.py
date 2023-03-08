@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import CustomUser
+from django.contrib.gis import forms as gis_forms
 
 
 class RegisterForm(UserCreationForm):
@@ -45,6 +46,14 @@ class RegisterForm(UserCreationForm):
                                        attrs={
                                            'class': 'form-control'
                                        }))
+    location = gis_forms.PointField(
+        required=True,
+        widget=gis_forms.OSMWidget(
+            attrs={'map_width': 600,
+                   'map_height': 600,
+                   'default_lat': 42.1710962,
+                   'default_lon': 18.8062112,
+                   'default_zoom': 6}))
 
     class Meta:
         model = CustomUser
@@ -54,7 +63,8 @@ class RegisterForm(UserCreationForm):
             'password1',
             'password2',
             'home_address',
-            'phone_number'
+            'phone_number',
+            'location'
         ]
 
 
@@ -104,6 +114,13 @@ class UpdateUserForm(forms.ModelForm):
                                        attrs={
                                            'class': 'form-control'
                                        }))
+    location = gis_forms.PointField(
+        required=True,
+        widget=gis_forms.OSMWidget(
+            attrs={
+                'map_width': 600,
+                'map_height': 600
+            }))
 
     class Meta:
         model = CustomUser
@@ -111,5 +128,6 @@ class UpdateUserForm(forms.ModelForm):
             'username',
             'email',
             'home_address',
-            'phone_number'
+            'phone_number',
+            'location'
         ]
