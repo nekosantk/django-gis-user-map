@@ -9,24 +9,42 @@ from django.core.serializers import serialize
 from django.views.generic.base import TemplateView
 from .models import CustomUser
 
+"""
+Contains code for loading data into views
+"""
 
 class HomepageView(TemplateView):
+    """
+    Handles the base URL route to display a map
+    """
+
     template_name = "index.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["markers"] = json.loads(serialize("geojson",
                                                   CustomUser.objects.all()))
-        print(context["markers"])
         return context
 
 
 class RegisterView(View):
+    """
+    Handles the registration and auth redirection
+    """
+
     form_class = RegisterForm
     initial = {'key': 'value'}
     template_name = 'register.html'
 
     def dispatch(self, request, *args, **kwargs):
+        """
+        Redirects users after being registered
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+
         # will redirect to the home page if a user tries to
         # access the register page while logged in
         if request.user.is_authenticated:
@@ -36,10 +54,22 @@ class RegisterView(View):
         return super(RegisterView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
+        """"
+        Displays the registration page
+        """
+
         form = self.form_class(initial=self.initial)
         return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):
+        """
+        Takes in data for new registrations
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+
         form = self.form_class(request.POST)
 
         if form.is_valid():
@@ -53,12 +83,24 @@ class RegisterView(View):
         return render(request, self.template_name, {'form': form})
 
 
-# Class based view that extends from the built in login view
-# to add a remember me functionality
+"""
+Class based view that extends from the built in login view
+to add a remember me functionality
+"""
 class CustomLoginView(LoginView):
+    """
+    Handles authentication
+    """
+
     form_class = LoginForm
 
     def form_valid(self, form):
+        """
+        Checks if login form data is valid
+        :param form:
+        :return:
+        """
+
         remember_me = form.cleaned_data.get('remember_me')
 
         if not remember_me:
@@ -76,6 +118,11 @@ class CustomLoginView(LoginView):
 
 @login_required
 def profile(request):
+    """
+    Updates and displays user profiles
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
 

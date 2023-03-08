@@ -6,6 +6,10 @@ from .models import CustomUser
 
 
 class CustomUserAdmin(UserAdmin):
+    """
+    Extension of the built-in admin user to display extra fields
+    """
+
     add_form = UserCreationForm
     form = UpdateUserForm
     model = CustomUser

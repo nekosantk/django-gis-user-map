@@ -4,6 +4,10 @@ from django.contrib.auth import views as auth_views
 from usermap.views import CustomLoginView
 from usermap.forms import LoginForm
 
+"""
+Specifies high-level url paths
+"""
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('usermap.urls')),

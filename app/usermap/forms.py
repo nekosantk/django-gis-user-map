@@ -5,6 +5,10 @@ from django.contrib.gis import forms as gis_forms
 
 
 class RegisterForm(UserCreationForm):
+    """
+    Handles the registration of a new user
+    """
+
     username = forms.CharField(max_length=100,
                                required=True,
                                widget=forms.TextInput(
@@ -56,6 +60,10 @@ class RegisterForm(UserCreationForm):
                    'default_zoom': 6}))
 
     class Meta:
+        """
+        Lists fields being passed to the form in the view
+        """
+
         model = CustomUser
         fields = [
             'username',
@@ -69,6 +77,10 @@ class RegisterForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
+    """
+    Handles the login for users
+    """
+
     username = forms.CharField(max_length=100,
                                required=True,
                                widget=forms.TextInput(
@@ -89,11 +101,19 @@ class LoginForm(AuthenticationForm):
     remember_me = forms.BooleanField(required=False)
 
     class Meta:
+        """
+        Lists fields being passed to the form in the view
+        """
+
         model = CustomUser
         fields = ['username', 'password', 'remember_me']
 
 
 class UpdateUserForm(forms.ModelForm):
+    """
+    Handles the display and updating of the user profile
+    """
+
     username = forms.CharField(required=True,
                                widget=forms.TextInput(
                                    attrs={
@@ -123,6 +143,10 @@ class UpdateUserForm(forms.ModelForm):
             }))
 
     class Meta:
+        """
+        Lists fields being passed to the form in the view
+        """
+
         model = CustomUser
         fields = [
             'username',

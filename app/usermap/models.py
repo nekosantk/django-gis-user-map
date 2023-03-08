@@ -6,6 +6,9 @@ from .managers import CustomUserManager
 
 
 class CustomUser(AbstractUser):
+    """
+    Extends the built-in Django user model to include extra fields
+    """
 
     # Extra fields
     home_address = models.CharField(max_length=250, null=False, blank=False)
@@ -13,10 +16,10 @@ class CustomUser(AbstractUser):
     location = PointField(geography=True, default=Point(0.0, 0.0))
 
     REQUIRED_FIELDS = [
+        "email",
         "password",
         "home_address",
-        "phone_number",
-        "location"
+        "phone_number"
     ]
 
     objects = CustomUserManager()

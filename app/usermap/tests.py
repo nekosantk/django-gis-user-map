@@ -2,9 +2,21 @@ from django.test import TestCase
 from usermap.models import CustomUser
 
 
+"""
+Primary tests are included in this file
+"""
+
 class UsersManagersTests(TestCase):
+    """
+    Tests for the user creation system
+    """
 
     def test_create_user(self):
+        """
+        Tests the creaton of a regular user
+        :return:
+        """
+
         user = CustomUser.objects.create_user(
             username="user",
             email="normal@user.com",
@@ -26,6 +38,11 @@ class UsersManagersTests(TestCase):
             CustomUser.objects.create_user(username="", password="foo")
 
     def test_create_superuser(self):
+        """
+        Tests the creation of an admin user
+        :return:
+        """
+
         admin_user = CustomUser.objects.create_superuser(
             username="superfoo",
             email="super@user.com",
