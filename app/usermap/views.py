@@ -13,6 +13,7 @@ from .models import CustomUser
 Contains code for loading data into views
 """
 
+
 class HomepageView(TemplateView):
     """
     Handles the base URL route to display a map
@@ -87,6 +88,8 @@ class RegisterView(View):
 Class based view that extends from the built in login view
 to add a remember me functionality
 """
+
+
 class CustomLoginView(LoginView):
     """
     Handles authentication

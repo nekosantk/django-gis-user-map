@@ -6,6 +6,7 @@ from usermap.models import CustomUser
 Primary tests are included in this file
 """
 
+
 class UsersManagersTests(TestCase):
     """
     Tests for the user creation system
